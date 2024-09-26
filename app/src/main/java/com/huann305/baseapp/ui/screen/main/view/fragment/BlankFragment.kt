@@ -1,4 +1,4 @@
-package com.huann305.baseapp.ui.main.view.fragment
+package com.huann305.baseapp.ui.screen.main.view.fragment
 
 import com.huann305.baseapp.R
 import com.huann305.baseapp.databinding.FragmentBlankBinding

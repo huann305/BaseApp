@@ -51,7 +51,11 @@ abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity() {
     }
 
     protected fun showLog(message: String) {
-        Log.e(TAG, message)
+        Log.d(TAG, message)
+    }
+
+    protected fun debug(message: String){
+        Log.e("DEBUG","$TAG: $message")
     }
 
     protected fun setOnClick(viewId: Int, onClick: () -> Unit) {

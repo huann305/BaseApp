@@ -112,20 +112,10 @@ fun View.scaleTo(scale: Float, duration: Long = 200L) {
     animator.start()
 }
 
-fun View.onClick(scale: Float = 0.9f, action: (() -> Unit)?) {
+fun View.onClick(action: (() -> Unit)?) {
     if (action == null) return
-    val prevScale = this.scaleX
     this.setOnClickListener {
-        val animator = ObjectAnimator.ofFloat(this, "scaleX", prevScale, scale, prevScale)
-        val animator2 = ObjectAnimator.ofFloat(this, "scaleY", prevScale, scale, prevScale)
-        animator.duration = 200
-        animator.start()
-        animator2.duration = 200
-        animator2.start()
-
-        this.postDelayed({
-            action()
-        }, 21)
+        action()
     }
 }
 
@@ -190,6 +180,7 @@ fun ImageView.loadImageCircular(url: String) {
         .apply(RequestOptions().transform(RoundedCorners(10)))
         .into(this)
 }
+
 fun ImageView.loadImageCircular(resourceId: Int?) {
     Glide.with(this.context)
         .load(resourceId)

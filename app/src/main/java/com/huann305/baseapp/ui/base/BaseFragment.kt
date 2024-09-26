@@ -22,7 +22,7 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
     abstract fun initEvent()
 
     lateinit var binding: T
-    lateinit var context: Context
+    protected lateinit var mContext: Context
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +44,7 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
         binding = DataBindingUtil.inflate(
             inflater!!, res, viewGroup, false
         )
-        context = requireContext()
+        mContext = requireContext()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

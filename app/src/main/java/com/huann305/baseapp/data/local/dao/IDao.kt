@@ -21,7 +21,7 @@ interface IDao {
     fun getItemById(id: Int): Item?
 
     @Delete
-    fun deleteItem(item: Item): Int
+    fun delete(item: Item): Int
 
     @Update
     fun updateItem(item: Item): Int
