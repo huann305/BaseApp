@@ -1,4 +1,4 @@
-package com.huann305.baseapp.data.remote
+package com.huann305.baseapp.data.remote.iinterface
 
 import com.huann305.baseapp.data.model.Cat
 import retrofit2.Call

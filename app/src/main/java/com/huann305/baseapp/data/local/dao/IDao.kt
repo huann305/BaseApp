@@ -12,10 +12,11 @@ import com.huann305.baseapp.data.model.Item
 @Dao
 interface IDao {
     @Query("SELECT * FROM item")
-    fun getAll(): LiveData<List<Item>>
-
+    fun getAll(): List<Item>
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertItems(items: List<Item>)
     @Insert
-    fun insert(item: Item)
+    fun insertItem(item: Item)
 
     @Query("SELECT * FROM item WHERE id = :id ORDER BY id DESC")
     fun getItemById(id: Int): Item?

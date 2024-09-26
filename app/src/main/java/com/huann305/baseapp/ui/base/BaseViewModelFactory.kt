@@ -1,4 +1,4 @@
-package com.huann305.baseapp.ui.custom
+package com.huann305.baseapp.ui.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

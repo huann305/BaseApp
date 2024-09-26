@@ -1,46 +1,22 @@
 package com.huann305.baseapp.ui.screen.main.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
-import com.huann305.baseapp.R
 import com.huann305.baseapp.data.model.Item
-import com.huann305.baseapp.util.onClick
+import com.huann305.baseapp.databinding.LayoutItemMainBinding
+import com.huann305.baseapp.ui.base.BaseAdapter
 
-abstract class MainAdapter(private val context: Context) : RecyclerView.Adapter<MainAdapter.MainViewHolder>(){
-    private var list: List<Item> = listOf()
-    inner class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val tv = itemView.findViewById<TextView>(R.id.name)
-        fun bindView(item: Item){
-            tv.text = item.name + item.id
+abstract class MainAdapter : BaseAdapter<Item, LayoutItemMainBinding>() {
+    override fun createBinding(inflater: LayoutInflater, parent: ViewGroup): LayoutItemMainBinding {
+        return LayoutItemMainBinding.inflate(inflater, parent, false)
+    }
 
-            itemView.onClick {
-                onDelete(item)
-            }
+    abstract fun onItemClick(item: Item, position: Int)
+
+    override fun bindItem(binding: LayoutItemMainBinding, item: Item, position: Int) {
+        binding.name.text = item.name + " " + item.id
+        binding.root.setOnClickListener {
+            onItemClick(item, position)
         }
-    }
-
-    fun setList(list: List<Item>){
-        this.list = list
-        notifyDataSetChanged()
-    }
-
-    abstract fun onDelete(item: Item)
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
-        return MainViewHolder(LayoutInflater.from(context).inflate(R.layout.layout_item_main, parent, false))
-    }
-
-    override fun getItemCount(): Int {
-        return list.size
-    }
-
-    override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
-        val item = list[position]
-
-        holder.bindView(item)
     }
 }
